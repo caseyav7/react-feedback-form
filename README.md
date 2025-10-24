@@ -4,20 +4,29 @@ A simple React-based "Contact Us" form with validation and success feedback.
 
 ## 🛠️ Setup Instructions
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The only requirement is having Node.js & npm installed
+  ```bash
+  brew install node
+  ```
 
-Follow these steps:
+### Follow these steps:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository using the project's Git URL.**
+   ```bash
+   git clone https://github.com/caseyav7/react-feedback-form.git
 
-# Step 2: Navigate to the project directory.
-cd react-feedback-form
+2. **Step 2: Navigate to the project directory.**
+   ```bash
+   cd react-feedback-form
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Install the necessary dependencies.**
+   ```bash
+    npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+4. **Start the development server with auto-reloading and an instant preview.**
+   ```bash
+    npm run dev
+
+5. **Open your browser and visit:**
+   ```bash
+   http://localhost:8080
