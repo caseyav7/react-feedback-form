@@ -15,7 +15,7 @@ The only requirement is having Node.js & npm installed
    ```bash
    git clone https://github.com/caseyav7/react-feedback-form.git
 
-2. **Step 2: Navigate to the project directory.**
+2. **Navigate to the project directory.**
    ```bash
    cd react-feedback-form
 
