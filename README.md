@@ -1,4 +1,4 @@
-# Contact Us Form App
+# Contact Form App
 
 A simple React-based "Contact Us" form with validation and success feedback.
 
@@ -8,14 +8,13 @@ The only requirement is having Node.js & npm installed
   ```bash
   brew install node
   ```
-
 ### Follow these steps:
 
 1. **Clone the repository using the project's Git URL.**
    ```bash
    git clone https://github.com/caseyav7/react-feedback-form.git
 
-2. **Navigate to the project directory.**
+2. **Step 2: Navigate to the project directory.**
    ```bash
    cd react-feedback-form
 
@@ -30,3 +29,5 @@ The only requirement is having Node.js & npm installed
 5. **Open your browser and visit:**
    ```bash
    http://localhost:8080
+   
+add steps to run tests
