@@ -30,4 +30,4 @@ The only requirement is having Node.js & npm installed
    ```bash
    http://localhost:8080
    
-add steps to run tests
+(add steps to run tests here)
