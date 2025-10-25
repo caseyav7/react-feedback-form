@@ -1,4 +1,4 @@
-# Contact Form App
+# Contact Us Form App
 
 A simple React-based "Contact Us" form with validation and success feedback.
 
