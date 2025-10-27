@@ -41,9 +41,7 @@ Feature: Contact Form Validation
 
   @negative @regression @contact_form @test006
   Scenario: Multiple required fields empty
-    When I leave the first name blank
-    And I leave the email blank
-    And I leave the feedback field blank
+    When I leave the title and first name and email and age and feedback field blank
     And I click the submit button
     Then I should see error messages saying:
       | First name is required |
