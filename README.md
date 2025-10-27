@@ -30,7 +30,7 @@ The only requirement is having Node.js & npm installed
    ```bash
    http://localhost:8080
    
-## 🛠️ Running Tests
+## 🧪 Running Tests
 
 1. **Navigate to the tests directory.**
    ```bash
