@@ -1,3 +1,4 @@
+@high @regression
 Feature: Contact Form Validation
   As a user
   I want to fill out the Contact Us form
@@ -7,41 +8,53 @@ Feature: Contact Form Validation
     Given I am on the Contact Us page
 
   # Positive Test Case
-  @positive @contact-form @smoke @regression
+  @positive @smoke @contact_form @test001
   Scenario: Successful form submission
     When I fill out all fields correctly
     And I click the submit button
     Then I should see a success message
 
   # Negative Test Cases
-  @negative @contact-form @regression
+  @negative @regression @contact_form @test002
   Scenario: Missing required field - First Name
     When I leave the first name blank
     And I click the submit button
-    Then I should see an error message for the first name field
+    Then I should see an error message saying "First name is required"
 
-  @negative @contact-form @regression
-  Scenario: Invalid email format
-    When I enter an invalid email address
-    And I click the submit button
-    Then I should see an email validation error
+  @negative @regression @contact_form @test003
+Scenario Outline: Invalid email format
+  When I enter an invalid email address "<email>"
+  And I click the submit button
+  Then I should see an error message saying "Please enter a valid email address"
 
-  @negative @contact-form @regression
+  Examples:
+    | email             |
+    | invalidemail.com  |
+    | john@             |
+    | @example.com      |
+    | john@example      |
+    | john@@example.com |
+    | john example.com  |
+
+  @negative @regression @contact_form @test004
   Scenario: Age not selected
     When I leave the age dropdown unselected
     And I click the submit button
-    Then I should see an error message for the age field
+    Then I should see an error message saying "Age is required"
 
-  @negative @contact-form @regression
+  @negative @regression @contact_form @test005
   Scenario: Feedback field empty
     When I leave the feedback field blank
     And I click the submit button
-    Then I should see an error message for the feedback field
+    Then I should see an error message saying "Feedback is required"
 
-  @negative @contact-form @regression
+  @negative @regression @contact_form @test006
   Scenario: Multiple required fields empty
-    When I leave the first name blank
-    And I leave the email blank
-    And I leave the feedback field blank
+    When I leave the title, first name, email, age, and feedback field blank
     And I click the submit button
-    Then I should see error messages for the first name, email, and feedback fields
+    Then I should see error messages saying:
+      | Title is required |
+      | First name is required |
+      | Please enter a valid email address |
+      | Age is required |
+      | Feedback is required |
