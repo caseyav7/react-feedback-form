@@ -34,7 +34,7 @@ The only requirement is having Node.js & npm installed
 
 1. **Navigate to the tests directory.**
    ```bash
-   cd react-feedback-form\tests
+   cd react-feedback-form/tests
 
 2. **Install the requirements.**
     ```bash
