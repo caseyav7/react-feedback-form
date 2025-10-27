@@ -22,19 +22,19 @@ Feature: Contact Form Validation
     Then I should see an error message saying "First name is required"
 
   @negative @regression @contact_form @test003
-Scenario Outline: Invalid email format
-  When I enter an invalid email address "<email>"
-  And I click the submit button
-  Then I should see an error message saying "Please enter a valid email address"
+  Scenario Outline: Invalid email format
+    When I enter an invalid email address "<email>"
+    And I click the submit button
+    Then I should see an error message saying "Please enter a valid email address"
 
-  Examples:
-    | email             |
-    | invalidemail.com  |
-    | john@             |
-    | @example.com      |
-    | john@example      |
-    | john@@example.com |
-    | john example.com  |
+    Examples:
+      | email             |
+      | invalidemail.com  |
+      | john@             |
+      | @example.com      |
+      | john@example      |
+      | john@@example.com |
+      | john example.com  |
 
   @negative @regression @contact_form @test004
   Scenario: Age not selected
