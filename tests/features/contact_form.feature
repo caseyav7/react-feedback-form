@@ -8,7 +8,7 @@ Feature: Contact Form Validation
     Given I am on the Contact Us page
 
   # Positive Test Case
-  @positive @smoke @contact_form @test001
+  @positive @smoke @regression @contact_form @test001
   Scenario: Successful form submission
     When I fill out all fields correctly
     And I click the submit button
