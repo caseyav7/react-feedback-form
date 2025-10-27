@@ -172,7 +172,7 @@ def step_invalid_email(context, email):
 @when('I leave the age dropdown unselected')
 def step_leave_age_blank(context):
     fill_form_fields(context.driver, title="Mr", first_name="John",
-                     email="john@example.com", feedback="Age not selected")
+                     email="john@example.com", age=None, feedback="Age not selected")
 
 @when('I leave the feedback field blank')
 def step_leave_feedback_blank(context):
@@ -184,7 +184,7 @@ def step_leave_email_blank(context):
     fill_form_fields(context.driver, title="Ms", first_name="Alex", email="",
                      age=28, feedback="Missing email test")
 
-@when('I leave the title and first name and email and age and feedback field blank')
+@when('I leave the title, first name, email, age, and feedback field blank')
 def step_multiple_fields_blank(context):
     fill_form_fields(context.driver, title="", first_name="", email="",
                      age=None, feedback="")
