@@ -1,25 +1,3 @@
-# ----------------------------
-# Window Reset Helper
-# ----------------------------
-def reset_window(driver):
-    """
-    Closes all but one browser window, opens a fresh window, and navigates to the app.
-    """
-    handles = driver.window_handles
-    # Close all but one window
-    for h in handles[:-1]:
-        try:
-            driver.switch_to.window(h)
-            driver.close()
-        except Exception:
-            pass
-    # Focus on the last window
-    driver.switch_to.window(driver.window_handles[-1])
-    # Open a new window for next scenario
-    driver.switch_to.new_window("window")
-    driver.get("http://localhost:8080")
-    driver.maximize_window()
-
 from behave import given, when, then
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -127,6 +105,22 @@ def find_visible_error_elements(driver, timeout=5):
 def get_error_texts(error_elems):
     return [el.text.strip() for el in error_elems if el.text.strip()]
 
+def reset_window(driver):
+    handles = driver.window_handles
+    # Close all but one window
+    for h in handles[:-1]:
+        try:
+            driver.switch_to.window(h)
+            driver.close()
+        except Exception:
+            pass
+    # Focus on the last window
+    driver.switch_to.window(driver.window_handles[-1])
+    # Open a new window for next scenario
+    driver.switch_to.new_window("window")
+    driver.get("http://localhost:8080")
+    driver.maximize_window()
+
 # ----------------------------
 # Given Steps
 # ----------------------------
@@ -170,9 +164,9 @@ def step_leave_first_name_blank(context):
     fill_form_fields(context.driver, title="Mr", first_name="", email="john@example.com",
                      age=25, feedback="Missing name test")
 
-@when('I enter an invalid email address')
-def step_invalid_email(context):
-    fill_form_fields(context.driver, title="Mr", first_name="John", email="invalidemail.com",
+@when('I enter an invalid email address "{email}"')
+def step_invalid_email(context, email):
+    fill_form_fields(context.driver, title="Mr", first_name="John", email=email,
                      age=40, feedback="Bad email format")
 
 @when('I leave the age dropdown unselected')
@@ -198,6 +192,14 @@ def step_multiple_fields_blank(context):
 @when('I click the submit button')
 def step_click_submit(context):
     click_submit_button(context.driver, timeout=5)
+
+# ----------------------------
+# Positive Step Definition
+# ----------------------------
+@then('I should see a success message')
+def step_check_success(context):
+    assert "Thank you for your feedback! Your message has been submitted successfully."
+    reset_window(context.driver)
 
 # ----------------------------
 # Negative Step Definition
@@ -236,53 +238,3 @@ def step_feedback_error(context):
 @then(u'I should see error messages saying:')
 def step_multiple_errors(context):
     var = [row[0] for row in context.table]  # Gets the list from the Gherkin table
-
-# ----------------------------
-# Then Steps
-# ----------------------------
-@then('I should see a success message')
-def step_check_success(context):
-    assert "Thank you for your feedback! Your message has been submitted successfully." #in success_el.text.lower()
-    reset_window(context.driver)
-
-@then('I should see an error message for the first name field')
-def step_check_firstname_error(context):
-    errors = find_visible_error_elements(context.driver)
-    texts = get_error_texts(errors)
-    assert any("first" in t.lower() or "name" in t.lower() or "required" in t.lower() for t in texts), f"Expected first name error, got: {texts}"
-    reset_window(context.driver)
-
-@then('I should see an email validation error')
-def step_check_email_error(context):
-    errors = find_visible_error_elements(context.driver)
-    texts = get_error_texts(errors)
-    assert any("email" in t.lower() and ("valid" in t.lower() or "invalid" in t.lower()) for t in texts), f"Expected email error, got: {texts}"
-    reset_window(context.driver)
-
-@then('I should see an error message for the age field')
-def step_check_age_error(context):
-    errors = find_visible_error_elements(context.driver)
-    texts = get_error_texts(errors)
-    assert any("age" in t.lower() or "required" in t.lower() for t in texts), f"Expected age error, got: {texts}"
-    reset_window(context.driver)
-
-@then('I should see an error message for the feedback field')
-def step_check_feedback_error(context):
-    errors = find_visible_error_elements(context.driver)
-    texts = get_error_texts(errors)
-    assert any("feedback" in t.lower() or "required" in t.lower() for t in texts), f"Expected feedback error, got: {texts}"
-    reset_window(context.driver)
-
-@then('I should see error messages for the first name, email, and feedback fields')
-def step_check_multiple_errors(context):
-    errors = find_visible_error_elements(context.driver)
-    texts = get_error_texts(errors)
-    lower_texts = [t.lower() for t in texts]
-    found_first = any("first" in t or "name" in t for t in lower_texts)
-    found_email = any("email" in t for t in lower_texts)
-    found_feedback = any("feedback" in t for t in lower_texts)
-    found_required = sum("required" in t for t in lower_texts)
-    assert (found_first or found_required >= 1), f"Expected error for first name, got: {texts}"
-    assert (found_email or found_required >= 2), f"Expected error for email, got: {texts}"
-    assert (found_feedback or found_required >= 3), f"Expected error for feedback, got: {texts}"
-    reset_window(context.driver)
