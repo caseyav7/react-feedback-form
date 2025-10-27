@@ -40,7 +40,7 @@ The only requirement is having Node.js & npm installed
     ```bash
     pip install -i requirements.txt
     ```
-    
+
 3. **Type in 'behave' to run all tests.**
     ```bash
     behave
