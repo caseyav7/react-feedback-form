@@ -38,7 +38,7 @@ The only requirement is having Node.js & npm installed
 
 2. **Install the requirements.**
     ```bash
-    pip insatll -i requirements.txt
+    pip install -i requirements.txt
     ```
     
 3. **Type in 'behave' to run all tests.**
