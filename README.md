@@ -1,4 +1,4 @@
-# Contact Form App
+# Contact Us Form App
 
 A simple React-based "Contact Us" form with validation and success feedback.
 
@@ -30,4 +30,17 @@ The only requirement is having Node.js & npm installed
    ```bash
    http://localhost:8080
    
-(add steps to run tests here)
+## 🛠️ Running Tests
+
+1. **Navigate to the tests directory.**
+   ```bash
+   cd react-feedback-form\tests
+
+2. **Install the requirements.**
+    ```bash
+    pip insatll -i requirements.txt
+    ```
+    
+3. **Type in 'behave' to run all tests.**
+    ```bash
+    behave
