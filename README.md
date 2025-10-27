@@ -4,11 +4,11 @@ A simple **React-based "Contact Us" form** with validation and automated end-to-
 
 ---
 
-## 🧰 Prerequisites
+## 🚀 Prerequisites
 
 - [Node.js](https://nodejs.org/) and npm  
 - [Python 3.10+](https://www.python.org/)  
-- Google Chrome (for Selenium automation)
+- [Google Chrome](https://www.google.com/chrome/) and matching [ChromeDriver](https://chromedriver.chromium.org/)
 
 ---
 
