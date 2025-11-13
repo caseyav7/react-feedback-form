@@ -1,10 +1,10 @@
-# 📬 Contact Us Form App
+# Contact Us Form App
 
 A simple **React-based "Contact Us" form** with validation and automated end-to-end testing using **Behave + Selenium**.
 
 ---
 
-## 🚀 Prerequisites
+## Prerequisites
 
 - [Node.js](https://nodejs.org/) and npm  
 - [Python 3.10+](https://www.python.org/)  
@@ -12,7 +12,7 @@ A simple **React-based "Contact Us" form** with validation and automated end-to-
 
 ---
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 1. **Clone the repository:**
    ```bash
@@ -39,7 +39,7 @@ A simple **React-based "Contact Us" form** with validation and automated end-to-
    http://localhost:8080
    ```
    
-## 🧪 Running Tests
+## How to run tests
 
 1. **Navigate to the tests directory.**
    ```bash
